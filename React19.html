@@ -285,74 +285,6 @@ article {
   </nav>
 
 <article>
-    <h1>هوكس رياكت - useState، useEffect، useContext</h1>
-    <p>هوكس هي ميزة جديدة في رياكت تسمح لك باستخدام حالة وأساليب دورة الحياة دون الحاجة لكتابة مكونات من الفئة. يعمل الهوكس عن طريق توفير وحدات تمكنك من استخدام الميزات المختلفة مثل الحالة وأساليب دورة الحياة بشكل أسهل وأقل تعقيدًا.</p>
-    
-    <h2>استخدام useState لإدارة الحالة</h2>
-    <p>هوكس <code>useState</code> يسمح لك بإضافة حالة إلى مكونات الدالة. على سبيل المثال:</p>
-    <pre><code>
-import React, { useState } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  return (
-    &lt;div&gt;
-      &lt;p&gt;عدد النقرات: {count}&lt;/p&gt;
-      &lt;button onClick={() => setCount(count + 1)}&gt;زيادة&lt;/button&gt;
-    &lt;/div&gt;
-  );
-}
-
-class App extends React.Component {
-  render() {
-    return &lt;Counter /&gt;;
-  }
-}
-
-export default App;
-    </code></pre>
-    
-    <h2>استخدام useEffect للتأثيرات الجانبية</h2>
-    <p>هوكس <code>useEffect</code> يسمح لك بتنفيذ تأثيرات جانبية في مكونات الدالة. على سبيل المثال:</p>
-    <pre><code>
-import React, { useState, useEffect } from 'react';
-
-function Timer() {
-  const [seconds, setSeconds] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds(seconds + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [seconds]);
-
-  return &lt;p&gt;مرت {seconds} ثواني&lt;/p&gt;;
-}
-
-class App extends React.Component {
-  render() {
-    return &lt;Timer /&gt;;
-  }
-}
-
-export default App;
-    </code></pre>
-    
-    <h2>استخدام useContext لإدارة السياق</h2>
-    <p>هوكس <code>useContext</code> يسمح لك بالوصول إلى السياق بسهولة. على سبيل المثال:</p>
-    <pre><code>
-import React, { createContext, useContext } from 'react';
-
-const UserContext = createContext();
-
-function UserProfile() {
-  const user = useContext(UserContext);
-
-  return &lt;p&gt;مرحبًا، {user.name}&lt;/p&gt;;
-<article>
     <h1>نشر تطبيقات رياكت</h1>
     <p>عندما تكون قد أنشأت تطبيق رياكت وأنهيت تطويره، يجب عليك نشره على الإنترنت لكي يتمكن المستخدمون من الوصول إليه. هناك العديد من خيارات النشر المتاحة لتطبيقات رياكت.</p>
     
@@ -369,6 +301,7 @@ function UserProfile() {
     <h2>الاستنتاج</h2>
     <p>نشر تطبيقات رياكت هو الخطوة الأخيرة في عملية تطوير التطبيق. باستخدام الأدوات المناسبة، يمكنك نشر تطبيقاتك على الإنترنت بسهولة وجعلها متاحة للمستخدمين.</p>
   </article>
+
 
 
   

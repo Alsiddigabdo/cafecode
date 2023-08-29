@@ -219,15 +219,11 @@ article {
       font-family: Consolas, monospace;
       direction: ltr;
     }
-.grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+ul, ol {
+      padding-left: 20px;
     }
-    .grid-item {
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
+    li {
+      margin-bottom: 10px;
     }
 </style>
 </head>
@@ -250,7 +246,7 @@ article {
     </div>
 </nav>
 
-        <nav>
+  <nav>
         <input type="checkbox" id="nav-toggle">
         <div class="logo">html <strong>شرح </strong></div>
  <ul class="links">
@@ -281,34 +277,41 @@ article {
     </nav>
 
 
-
 <article>
-      <h1>درس التخطيط الشبكي (Grid Layout) في لغة HTML5</h1>
-      <p>في هذا الدرس، سنتعلم كيفية استخدام التخطيط الشبكي لتنظيم الموقع في صفحات الويب باستخدام تقنيات HTML5 وCSS.</p>
-      <div class="grid-container">
-        <div class="grid-item">عنصر 1</div>
-        <div class="grid-item">عنصر 2</div>
-        <div class="grid-item">عنصر 3</div>
-        <div class="grid-item">عنصر 4</div>
-        <div class="grid-item">عنصر 5</div>
-        <div class="grid-item">عنصر 6</div>
-      </div>
-      <h2>التخطيط الشبكي</h2>
-      <p>التخطيط الشبكي هو نظام قوي لتحديد توزيع العناصر في صفحة الويب. يمكن استخدام وسم <code>&lt;div&gt;</code> لإنشاء العناصر وتحديد التخطيط الشبكي باستخدام الخصائص المتعلقة به.</p>
-      <pre><code>
-    &lt;div class="grid-container"&gt;
-      &lt;div class="grid-item"&gt;عنصر 1&lt;/div&gt;
-      &lt;div class="grid-item"&gt;عنصر 2&lt;/div&gt;
-      &lt;div class="grid-item"&gt;عنصر 3&lt;/div&gt;
-    &lt;/div&gt;
-        </code></pre>
-      <h2>تخصيص العناصر</h2>
-      <p>يمكن تحديد خصائص العناصر مثل الهوامش والأبعاد باستخدام الخصائص المرتبطة بالتخطيط الشبكي.</p>
-      <h2>التحكم في المساحات والهوامش</h2>
-      <p>يمكن التحكم في المساحات بين العناصر والهوامش باستخدام خصائص مثل <code>gap</code> و <code>margin</code>.</p>
-      <h2>استنتاج</h2>
-      <p>التخطيط الشبكي يمنح مرونة وتحكمًا كبيرًا في تنظيم الموقع على صفحات الويب. باستخدام الخصائص المتعلقة بالتخطيط الشبكي، يمكننا إنشاء تصاميم متنوعة وجذابة.</p>
-    </article>
+    <h1>درس القوائم في لغة HTML5</h1>
+    <p>في هذا الدرس، سنتعلم كيفية إنشاء القوائم في صفحات الويب باستخدام تقنيات HTML5.</p>
+    <h2>قائمة غير مرتبة (Unordered List)</h2>
+    <p>يمكن إنشاء قائمة غير مرتبة باستخدام وسم <code>&lt;ul&gt;</code>. يمكن إضافة العناصر بواسطة وسم <code>&lt;li&gt;</code>.</p>
+    <pre><code>
+&lt;ul&gt;
+  &lt;li&gt;عنصر 1&lt;/li&gt;
+  &lt;li&gt;عنصر 2&lt;/li&gt;
+  &lt;li&gt;عنصر 3&lt;/li&gt;
+&lt;/ul&gt;
+    </code></pre>
+    <h2>قائمة مرتبة (Ordered List)</h2>
+    <p>يمكن إنشاء قائمة مرتبة باستخدام وسم <code>&lt;ol&gt;</code>. العناصر تعطى ترتيبًا تلقائيًا.</p>
+    <pre><code>
+&lt;ol&gt;
+  &lt;li&gt;العنصر الأول&lt;/li&gt;
+  &lt;li&gt;العنصر الثاني&lt;/li&gt;
+  &lt;li&gt;العنصر الثالث&lt;/li&gt;
+&lt;/ol&gt;
+    </code></pre>
+    <h2>قائمة تعريف (Definition List)</h2>
+    <p>يمكن إنشاء قائمة تعريف باستخدام وسم <code>&lt;dl&gt;</code> لتحديد مصطلحات وتعاريفها باستخدام وسمي <code>&lt;dt&gt;</code> و <code>&lt;dd&gt;</code>.</p>
+    <pre><code>
+&lt;dl&gt;
+  &lt;dt&gt;المصطلح 1&lt;/dt&gt;
+  &lt;dd&gt;تعريف المصطلح 1&lt;/dd&gt;
+  &lt;dt&gt;المصطلح 2&lt;/dt&gt;
+  &lt;dd&gt;تعريف المصطلح 2&lt;/dd&gt;
+&lt;/dl&gt;
+    </code></pre>
+    <h2>استنتاج</h2>
+    <p>القوائم هي أدوات مفيدة لتنظيم المحتوى وعرضه بشكل منظم على صفحات الويب. باستخدام وسوم HTML5، يمكننا إنشاء أنواع مختلفة من القوائم واستخدامها حسب الحاجة.</p>
+  </article>
+
     
 
 <script>

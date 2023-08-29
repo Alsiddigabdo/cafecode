@@ -219,11 +219,16 @@ article {
       font-family: Consolas, monospace;
       direction: ltr;
     }
-ul, ol {
-      padding-left: 20px;
+h1, h2, h3 {
+      color: #007bff;
     }
-    li {
-      margin-bottom: 10px;
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .highlight {
+      background-color: #ffffcc;
+      padding: 5px;
     }
 </style>
 </head>
@@ -245,71 +250,53 @@ ul, ol {
         <button class="nav-button" id="forwardButton"><i class="fas fa-chevron-right"></i></button>
     </div>
 </nav>
+
     <nav>
-        <input type="checkbox" id="nav-toggle">
-        <div class="logo">html <strong>شرح </strong></div>
- <ul class="links">
-      <li><a href="Html1.html">تشريح هيكل صفحة HTML</a></li>
-      <li><a href="Html2.html">الوسوم (Tags) الأساسية في HTML5</a></li>
-      <li><a href="Html3.html">الروابط والصور (Links and Images)</a></li>
-      <li><a href="Html4.html">الجداول (Tables)</a></li>
-      <li><a href="Html5.html">نماذج (Forms)</a></li>
-      <li><a href="Html6.html">وسائط التشغيل المتعددة (Multimedia)</a></li>
-      <li><a href="Html7.html">الصوت والفيديو (Audio and Video)</a></li>
-      <li><a href="Html8.html">تنسيق النصوص والخطوط (Text Formatting and Fonts)</a></li>
-      <li><a href="Html9.html">القوائم (Lists)</a></li>
-      <li><a href="Html10.html ">التخطيط الشبكي (Grid Layout)</a></li>
-      <li><a href="Html11.html ">نماذج التحقق والتحقق من الصحة (Validation and Verification)</a></li>
+          <input type="checkbox" id="nav-toggle">
+          <div class="logo">html <strong>شرح </strong></div>
+          <ul class="links">
+            <li><a href="Html1.html">تشريح هيكل صفحة HTML</a></li>
+            <li><a href="Html2.html">الوسوم (Tags) الأساسية في HTML5</a></li>
+            <li><a href="Html3.html">الروابط والصور (Links and Images)</a></li>
+            <li><a href="Html4.html">الجداول (Tables)</a></li>
+            <li><a href="Html5.html">نماذج (Forms)</a></li>
+            <li><a href="Html6.html">وسائط التشغيل المتعددة (Multimedia)</a></li>
+            <li><a href="Html7.html">الصوت والفيديو (Audio and Video)</a></li>
+            <li><a href="Html8.html">تنسيق النصوص والخطوط (Text Formatting and Fonts)</a></li>
+            <li><a href="Html9.html">القوائم (Lists)</a></li>
+            <li><a href="Html10.html ">التخطيط الشبكي (Grid Layout)</a></li>
+            <li><a href="Html11.html ">نماذج التحقق والتحقق من الصحة (Validation and Verification)</a></li>
+    
+            <li><a href="Html12.html ">التخطيط الانسيابي (Responsive Layout)</a></li>
+            <li><a href="Html13.html">الاطارات (iframe)</a></li>
+            <li><a href="#graphics-animation"> قائمة الوسوم html5 ( tags)</a></li>
+    
+    
+    
+          </ul>
+          <label for="nav-toggle" class="icon-burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </label>
+        </nav>
 
-      <li><a href="Html12.html ">التخطيط الانسيابي (Responsive Layout)</a></li>
-      <li><a href="Html13.html">الاطارات (iframe)</a></li>
-            <li><a href="#graphics-animation">  قائمة الوسوم html5 (  tags)</a></li>
 
-
-
-    </ul>
-    <label for="nav-toggle" class="icon-burger">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </label>
-    </nav>
-
-
-
-<article>
-    <h1>درس القوائم في لغة HTML5</h1>
-    <p>في هذا الدرس، سنتعلم كيفية إنشاء القوائم في صفحات الويب باستخدام تقنيات HTML5.</p>
-    <h2>قائمة غير مرتبة (Unordered List)</h2>
-    <p>يمكن إنشاء قائمة غير مرتبة باستخدام وسم <code>&lt;ul&gt;</code>. يمكن إضافة العناصر بواسطة وسم <code>&lt;li&gt;</code>.</p>
-    <pre><code>
-&lt;ul&gt;
-  &lt;li&gt;عنصر 1&lt;/li&gt;
-  &lt;li&gt;عنصر 2&lt;/li&gt;
-  &lt;li&gt;عنصر 3&lt;/li&gt;
-&lt;/ul&gt;
-    </code></pre>
-    <h2>قائمة مرتبة (Ordered List)</h2>
-    <p>يمكن إنشاء قائمة مرتبة باستخدام وسم <code>&lt;ol&gt;</code>. العناصر تعطى ترتيبًا تلقائيًا.</p>
-    <pre><code>
-&lt;ol&gt;
-  &lt;li&gt;العنصر الأول&lt;/li&gt;
-  &lt;li&gt;العنصر الثاني&lt;/li&gt;
-  &lt;li&gt;العنصر الثالث&lt;/li&gt;
-&lt;/ol&gt;
-    </code></pre>
-    <h2>قائمة تعريف (Definition List)</h2>
-    <p>يمكن إنشاء قائمة تعريف باستخدام وسم <code>&lt;dl&gt;</code> لتحديد مصطلحات وتعاريفها باستخدام وسمي <code>&lt;dt&gt;</code> و <code>&lt;dd&gt;</code>.</p>
-    <pre><code>
-&lt;dl&gt;
-  &lt;dt&gt;المصطلح 1&lt;/dt&gt;
-  &lt;dd&gt;تعريف المصطلح 1&lt;/dd&gt;
-  &lt;dt&gt;المصطلح 2&lt;/dt&gt;
-  &lt;dd&gt;تعريف المصطلح 2&lt;/dd&gt;
-&lt;/dl&gt;
-    </code></pre>
+  <article>
+    <h1>درس تنسيق النصوص والخطوط في لغة HTML5</h1>
+    <p>في هذا الدرس، سنتعلم كيفية تنسيق النصوص والخطوط في صفحات الويب باستخدام تقنيات HTML5 وCSS.</p>
+    <h2>تنسيق العناوين</h2>
+    <p>يمكن تنسيق العناوين باستخدام وسوم HTML مثل <code>&lt;h1&gt;</code> و <code>&lt;h2&gt;</code> و <code>&lt;h3&gt;</code>. يمكن تعديل الألوان وحجم الخط ونمط الخط باستخدام CSS.</p>
+    <h2>تنسيق الفقرات</h2>
+    <p>يمكن تحديد حجم الخط وتباعد السطور والهوامش باستخدام CSS. يمكن استخدام الوسم <code>&lt;p&gt;</code> لإنشاء فقرات نصية.</p>
+    <h2>النص المؤطر</h2>
+    <p class="highlight">يمكن استخدام العناصر المؤطرة مثل &lt;span&gt; لتطبيق تنسيقات خاصة على أجزاء من النص.</p>
+    <h2>النص المائل والعريض</h2>
+    <p><em>النص المائل</em> و<strong>النص العريض</strong> يمكن تطبيقهما باستخدام وسوم HTML مثل &lt;em&gt; و &lt;strong&gt;.</p>
+    <h2>استخدام الخطوط المخصصة</h2>
+    <p>يمكن استخدام الخطوط المخصصة باستيرادها من خدمات الخطوط على الويب مثل Google Fonts باستخدام CSS.</p>
     <h2>استنتاج</h2>
-    <p>القوائم هي أدوات مفيدة لتنظيم المحتوى وعرضه بشكل منظم على صفحات الويب. باستخدام وسوم HTML5، يمكننا إنشاء أنواع مختلفة من القوائم واستخدامها حسب الحاجة.</p>
+    <p>تنسيق النصوص والخطوط يساهم في تحسين جمالية ووضوح المحتوى على صفحات الويب. باستخدام وسوم HTML وCSS، يمكننا تحقيق تنسيقات مختلفة للنصوص وتخصيصها حسب الاحتياجات.</p>
   </article>
 
     

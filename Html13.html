@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قائمة الأقسام</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: 'Font Name', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+nav {
+    position: relative ;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: 'Montserrat', 'sans-serif';
+    height: 100px;
+    background-color: seagreen ;
+    padding: 0 1%;
+    height :60px;
+    
+
+}
+nav .logo { 
+    float: left;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: white ;
+}
+nav .links {
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav .links li {
+    list-style: none;
+}
+nav .links a {
+    display: block;
+    padding: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+nav .links a:hover {
+    color: seagreen ;
+}
+nav .links a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: seagreen ;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+nav .links a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+    color: #27262c ;
+}
+#nav-toggle {
+     position: absolute;
+     top: -100px;
+}
+nav .icon-burger {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+nav .icon-burger .line {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .5s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+    
+    nav .logo {
+        float: none;
+        width: auto;
+        justify-content: center;
+        
+        top: 0;
+        bottom: auto;
+    }
+    nav .links {
+        float: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        right: 0;
+        top: 120px;
+        
+        margin-top :5px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(0, 0, 9, .9);
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a {
+        font-size: 12px;
+        color:#fff ;
+
+    }
+    nav :checked ~ .links {
+        bottom: 0;
+    }
+    nav .icon-burger {
+        display: block;
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 2;
+    }
+}
+.navtools {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 5px;
+    }
+
+    .nav-item {
+        margin: 0 20px;
+    }
+
+    .nav-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* تعيين لون الأيقونات إلى الأبيض */
+    .nav-button i {
+        color: white;
+    }
+
+    /* تفاعل عند مرور الماوس */
+    .nav-button:hover {
+        transform: scale(1.1);
+    }
+
+    /* تفاعل عند الضغط */
+    .nav-button:active {
+        transform: scale(0.9);
+    }
+
+article {
+      max-width: 600px;
+      margin: 0px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      direction: rtl;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+      direction: ltr;
+    }
+    code {
+      font-family: Consolas, monospace;
+      direction: ltr;
+    }
+
+.footer {
+  background-color: seagreen;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.phone-number, .rights {
+  margin-top: 10px;
+}
+.footer a {
+  color: white;
+  text-decoration: none; /* لإزالة تنسيق الرابط الافتراضي */
+}
+</style>
+</head>
+<body>
+  <nav class="navtools">
+    <div class="nav-item">
+        <button class="nav-button" id="backButton"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="phoneButton"><i class="fas fa-phone"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="homeButton"><i class="fas fa-home"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="commentsButton"><i class="fas fa-comments"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="forwardButton"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</nav>
+
+    <nav>
+        <input type="checkbox" id="nav-toggle">
+        <div class="logo">html <strong>شرح </strong></div>
+ <ul class="links">
+      <li><a href="/Html1.html">تشريح هيكل صفحة HTML</a></li>
+      <li><a href="#tags">الوسوم (Tags) الأساسية في HTML5</a></li>
+      <li><a href="#links-images">الروابط والصور (Links and Images)</a></li>
+      <li><a href="#tables">الجداول (Tables)</a></li>
+      <li><a href="#forms">نماذج (Forms)</a></li>
+      <li><a href="#multimedia">وسائط التشغيل المتعددة (Multimedia)</a></li>
+      <li><a href="#audio-video">الصوت والفيديو (Audio and Video)</a></li>
+      <li><a href="#text-formatting">تنسيق النصوص والخطوط (Text Formatting and Fonts)</a></li>
+      <li><a href="#lists">القوائم (Lists)</a></li>
+      <li><a href="#grid-layout">التخطيط الشبكي (Grid Layout)</a></li>
+      <li><a href="#validation">نماذج التحقق والتحقق من الصحة (Validation and Verification)</a></li>
+
+      <li><a href="#responsive-layout">التخطيط الانسيابي (Responsive Layout)</a></li>
+      <li><a href="#maps">الاطارات (iframe)</a></li>
+            <li><a href="#graphics-animation">  قائمة الوسوم html5 (  tags)</a></li>
+
+
+
+    </ul>
+    <label for="nav-toggle" class="icon-burger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+    </nav>
+
+
+
+<article>
+    <h1>وسوم HTML5</h1>
+    <p>في هذا الدرس، سنتعرف على جميع وسوم HTML5 مع تعريف واختصار لكل وسم.</p>
+    <table>
+      <tr>
+        <th>الوسم</th>
+        <th>التعريف</th>
+      </tr>
+      <tr>
+        <td>&lt;!DOCTYPE html&gt;</td>
+        <td>تعريف نوع المستند وإصدار HTML</td>
+      </tr>
+      <tr>
+        <td>&lt;html&gt;</td>
+        <td>العنصر الجذر لصفحة HTML</td>
+      </tr>
+      <tr>
+        <td>&lt;head&gt;</td>
+        <td>يحتوي على المعلومات الرئيسية للصفحة</td>
+      </tr>
+      <tr>
+        <td>&lt;title&gt;</td>
+        <td>يحدد عنوان الصفحة</td>
+      </tr>
+      <tr>
+        <td>&lt;meta&gt;</td>
+        <td>يحدد معلومات متعلقة بالصفحة</td>
+      </tr>
+      <tr>
+        <td>&lt;link&gt;</td>
+        <td>يقوم بربط المستند بملفات خارجية مثل CSS</td>
+      </tr>
+      <tr>
+        <td>&lt;style&gt;</td>
+        <td>يحدد أنماط التنسيق الداخلي للصفحة</td>
+      </tr>
+      <tr>
+        <td>&lt;script&gt;</td>
+        <td>يضمن تنفيذ البرمجيات النصية</td>
+      </tr>
+      <tr>
+        <td>&lt;noscript&gt;</td>
+        <td>يعرض محتوى بديل إذا تم تعطيل البرمجيات النصية</td>
+      </tr>
+      <tr>
+        <td>&lt;base&gt;</td>
+        <td>يحدد عنوان URL الأساسي للمستند</td>
+      </tr>
+      <tr>
+        <td>&lt;body&gt;</td>
+        <td>يحتوي على محتوى الصفحة المرئي للمستخدم</td>
+      </tr>
+      <tr>
+        <td>&lt;h1&gt; إلى &lt;h6&gt;</td>
+        <td>يُنشئ عناوين من المستوى 1 إلى 6</td>
+      </tr>
+      <tr>
+        <td>&lt;p&gt;</td>
+        <td>يُستخدم لعرض فقرة نصية</td>
+      </tr>
+      <tr>
+        <td>&lt;a&gt;</td>
+        <td>يُنشئ ارتباطًا نصيًا أو صوريًا</td>
+      </tr>
+      <tr>
+        <td>&lt;img&gt;</td>
+        <td>يُضيف صورة إلى الصفحة</td>
+      </tr>
+      <tr>
+        <td>&lt;br&gt;</td>
+        <td>يُستخدم لإنشاء فاصل أفقي (سطر فارغ)</td>
+      </tr>
+      <tr>
+        <td>&lt;hr&gt;</td>
+        <td>يُستخدم لإنشاء خط أفقي (فاصل أفقي)</td>
+      </tr>
+      <tr>
+        <td>&lt;ul&gt;</td>
+        <td>يُنشئ قائمة غير مرتبة</td>
+      </tr>
+      <tr>
+        <td>&lt;ol&gt;</td>
+        <td>يُنشئ قائمة مرتبة</td>
+      </tr>
+      <tr>
+        <td>&lt;li&gt;</td>
+        <td>يُنشئ عنصرًا في قائمة</td>
+      </tr>
+      <tr>
+        <td>&lt;dl&gt;</td>
+        <td>يُنشئ قائمة تعريف</td>
+      </tr>
+      <tr>
+        <td>&lt;dt&gt;</td>
+        <td>يُنشئ عنصر عنوان في قائمة التعريف</td>
+      </tr>
+      <tr>
+        <td>&lt;dd&gt;</td>
+        <td>يُنشئ عنصر وصف في قائمة التعريف</td>
+      </tr>
+      <tr>
+        <td>&lt;table&gt;</td>
+        <td>يُنشئ جدول</td>
+      </tr>
+      <tr>
+        <td>&lt;caption&gt;</td>
+        <td>يُحدد عنوان الجدول</td>
+      </tr>
+      <tr>
+        <td>&lt;th&gt;</td>
+        <td>يُنشئ خلية عنوان في الجدول</td>
+      </tr>
+      <tr>
+        <td>&lt;tr&gt;</td>
+        <td>يُنشئ صفًا في الجدول</td>
+      </tr>
+      <tr>
+        <td>&lt;td&gt;</td>
+        <td>يُنشئ خلية في الجدول</td>
+      </tr>
+      <tr>
+        <td>&lt;thead&gt;</td>
+        <td>يُنشئ مجموعة رأس للجدول</td>
+      </tr>
+      <tr>
+        <td>&lt;tfoot&gt;</td>
+        <td>يُنشئ مجموعة تذييل للجدول</td>
+      </tr>
+      <tr>
+        <td>&lt;tbody&gt;</td>
+        <td>يُنشئ مجموعة جسم للجدول</td>
+      </tr>
+      <tr>
+        <td>&lt;colgroup&gt;</td>
+        <td>يُعرف مجموعة من أعمدة الجدول لتطبيق الأنماط عليها</td>
+      </tr>
+      <tr>
+        <td>&lt;col&gt;</td>
+        <td>يُعرف عمود في مجموعة الأعمدة</td>
+      </tr>
+      <tr>
+        <td>&lt;form&gt;</td>
+        <td>يُنشئ نموذج لجمع البيانات</td>
+      </tr>
+      <tr>
+        <td>&lt;input&gt;</td>
+        <td>يُنشئ مربع نص أو مدخل بيانات آخر</td>
+      </tr>
+      <tr>
+        <td>&lt;textarea&gt;</td>
+        <td>يُنشئ مساحة نصية كبيرة</td>
+      </tr>
+      <tr>
+        <td>&lt;button&gt;</td>
+        <td>يُنشئ زر</td>
+      </tr>
+      <tr>
+        <td>&lt;select&gt;</td>
+        <td>يُنشئ قائمة منسدلة</td>
+      </tr>
+      <tr>
+        <td>&lt;optgroup&gt;</td>
+        <td>يُنشئ مجموعة من الخيارات داخل القائمة</td>
+      </tr>
+      <tr>
+        <td>&lt;option&gt;</td>
+        <td>يُنشئ خيار داخل القائمة</td>
+      </tr>
+      <tr>
+        <td>&lt;label&gt;</td>
+        <td>يُعرف تسمية لعنصر نموذج</td>
+      </tr>
+      <tr>
+        <td>&lt;fieldset&gt;</td>
+        <td>يُنشئ مجموعة من العناصر في نموذج</td>
+      </tr>
+      <tr>
+        <td>&lt;legend&gt;</td>
+        <td>يُحدد عنوان للمجموعة في نموذج</td>
+      </tr>
+      <tr>
+        <td>&lt;datalist&gt;</td>
+        <td>يُنشئ قائمة بيانات لمساعدة المستخدم في اختيار القيم</td>
+      </tr>
+      <tr>
+        <td>&lt;output&gt;</td>
+        <td>يُعرض نتيجة عملية حسابية أو نصية</td>
+      </tr>
+      <tr>
+        <td>&lt;progress&gt;</td>
+        <td>يُعرض شريط تقدم</td>
+      </tr>
+      <tr>
+        <td>&lt;meter&gt;</td>
+        <td>يُعرض مؤشر لقيمة عددية محددة</td>
+      </tr>
+      <tr>
+        <td>&lt;details&gt;</td>
+        <td>يُنشئ مربع تفاصيل قابل للتوسيع/الطي</td>
+      </tr>
+      <tr>
+        <td>&lt;summary&gt;</td>
+        <td>يُعرض عنوان لمربع التفاصيل</td>
+      </tr>
+      <tr>
+        <td>&lt;menu&gt;</td>
+        <td>يُنشئ قائمة نصية</td>
+      </tr>
+      <tr>
+        <td>&lt;menuitem&gt;</td>
+        <td>يُعرف عنصر في القائمة</td>
+      </tr>
+      <tr>
+        <td>&lt;dialog&gt;</td>
+        <td>يُنشئ مربع حوار</td>
+      </tr>
+      <tr>
+        <td>&lt;script&gt;</td>
+        <td>يُستخدم لتنفيذ البرمجيات النصية</td>
+      </tr>
+      <tr>
+        <td>&lt;noscript&gt;</td>
+        <td>يُعرض محتوى بديل إذا تم تعطيل البرمجيات النصية</td>
+      </tr>
+      <tr>
+        <td>&lt;canvas&gt;</td>
+        <td>يُستخدم لرسم الرسومات والرسوم المتحركة</td>
+      </tr>
+      <tr>
+        <td>&lt;audio&gt;</td>
+        <td>يُضيف مشغل للصوت</td>
+      </tr>
+      <tr>
+        <td>&lt;video&gt;</td>
+        <td>يُضيف مشغل للفيديو</td>
+      </tr>
+      <tr>
+        <td>&lt;source&gt;</td>
+        <td>يُحدد مصدر وسائط لعنصر الصوت أو الفيديو</td>
+      </tr>
+      <tr>
+        <td>&lt;source&gt;</td>
+        <td>يُحدد مصدر وسائط لعنصر الصوت أو الفيديو</td>
+        </tr>
+        <tr>
+          <td>&lt;param&gt;</td>
+          <td>يُحدد معلمة لعنصر الكائن المضمن</td>
+        </tr>
+        <td>&lt;source&gt;</td>
+        <td>يُحدد مصدر وسائط لعنصر الصوت أو الفيديو</td>
+      </tr>
+      <tr>
+        <td>&lt;summary&gt;</td>
+        <td>يُعرض عنوان لمربع التفاصيل</td>
+      </tr>
+      <tr>
+        <td>&lt;menu&gt;</td>
+        <td>يُنشئ قائمة نصية</td>
+      </tr>
+      <tr>
+        <td>&lt;menuitem&gt;</td>
+        <td>يُعرف عنصر في القائمة</td>
+      </tr>
+      <tr>
+        <td>&lt;dialog&gt;</td>
+        <td>يُنشئ مربع حوار</td>
+      </tr>
+      <tr>
+        <td>&lt;keygen&gt;</td>
+        <td>يُستخدم لإنشاء مفتاح عام وخاص للمستخدم</td>
+      </tr>
+  </article>
+
+<script>
+  function toggleMenu() {
+    var links = document.querySelector('.links');
+    var menuIcon = document.getElementById('menu-icon');
+    links.classList.toggle('active');
+    menuIcon.classList.toggle('active');
+  }
+  document.getElementById("backButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الإمام
+    window.history.back(); // يعيدك إلى الصفحة السابقة في السجل
+  });
+  
+  document.getElementById("forwardButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الخلف
+    window.history.forward(); // يذهب إلى الصفحة التي تم الانتقال لها بعد الصفحة الحالية
+  });
+  
+  document.getElementById("phoneButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الهاتف
+    // مثلاً: window.location.href = "رابط الهاتف";
+  });
+  
+  document.getElementById("homeButton").addEventListener("click", function() {
+  
+    window.location.href = "/Appt.html";
+  });
+  
+  document.getElementById("commentsButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر المنتديات
+    // مثلاً: window.location.href = "رابط المنتديات";
+  });
+</script>
+</body>
+
+</html>

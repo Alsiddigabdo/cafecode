@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React menu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: 'Font Name', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+nav {
+    position: relative ;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: 'Montserrat', 'sans-serif';
+    height: 100px;
+    background-color: seagreen ;
+    padding: 0 1%;
+    height :60px;
+    
+
+}
+nav .logo { 
+    float: left;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: white ;
+}
+nav .links {
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav .links li {
+    list-style: none;
+}
+nav .links a {
+    display: block;
+    padding: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+nav .links a:hover {
+    color: seagreen ;
+}
+nav .links a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: seagreen ;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+nav .links a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+    color: #27262c ;
+}
+#nav-toggle {
+     position: absolute;
+     top: -100px;
+}
+nav .icon-burger {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+nav .icon-burger .line {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .5s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+    
+    nav .logo {
+        float: none;
+        width: auto;
+        justify-content: center;
+        
+        top: 0;
+        bottom: auto;
+    }
+    nav .links {
+        float: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        right: 0;
+        top: 120px;
+        
+        margin-top :5px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(0, 0, 9, .9);
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a {
+        font-size: 10px;
+        color:#fff ;
+
+    }
+    nav :checked ~ .links {
+        bottom: 0;
+    }
+    nav .icon-burger {
+        display: block;
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 2;
+    }
+}
+.navtools {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 5px;
+    }
+
+    .nav-item {
+        margin: 0 20px;
+    }
+
+    .nav-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* تعيين لون الأيقونات إلى الأبيض */
+    .nav-button i {
+        color: white;
+    }
+
+    /* تفاعل عند مرور الماوس */
+    .nav-button:hover {
+        transform: scale(1.1);
+    }
+
+    /* تفاعل عند الضغط */
+    .nav-button:active {
+        transform: scale(0.9);
+    }
+.footer {
+  background-color: seagreen;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.phone-number, .rights {
+  margin-top: 10px;
+}
+.footer a {
+  color: white;
+  text-decoration: none; /* لإزالة تنسيق الرابط الافتراضي */
+}
+h1 {
+    color: seagreen ;
+    text-align: center ;
+    font-size :18px;
+    direction: rtl ;
+  }
+  p {
+    color: black ;
+    font-size: 16px;
+    text-align: center ;
+    direction: rtl;
+  }
+  span {
+      background-color: #ffd700;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }article {
+      max-width: 600px;
+      margin: 0px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      direction: rtl;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+      direction: ltr;
+    }
+    code {
+      font-family: Consolas, monospace;
+      direction: ltr;
+    }
+    h2{
+      text-align: center ;
+      color : rebeccapurple;
+    }
+</style>
+</head>
+<body>
+  <nav class="navtools">
+    <div class="nav-item">
+        <button class="nav-button" id="backButton"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="phoneButton"><i class="fas fa-phone"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="homeButton"><i class="fas fa-home"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="commentsButton"><i class="fas fa-comments"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="forwardButton"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</nav>
+
+    <nav>
+        <input type="checkbox" id="nav-toggle">
+        <div class="logo">.javascript <strong>شرح </strong></div>
+ <ul class="links" dir="rtl">
+      <li><a href="javascript1.html">المتغيرات وأنواع البيانات</a></li>
+      <li><a href="javascript2.html"> العمليات الحسابية والمنطقية</a></li>
+      <li><a href="javascript3.html">العمليات التحكمية والتكرارية (Loops and Conditional Statements) </a></li>
+      <li><a href="javascript4.html">الدوال والعمليات (Functions and Methods)</a></li>
+      <li><a href="javascript5.html">المصفوفات (Arrays)</a></li>
+      <li><a href="javascript6.html">الكائنات والتعامل معها (Objects and Object-oriented Programming)</a></li>
+      <li><a href="javascript7.html">التعبيرات النمطية (Regular Expressions)</a></a></li>
+
+ 
+
+    </ul>
+    <label for="nav-toggle" class="icon-burger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+    </nav>
+
+
+<article>
+  <h1>التعبيرات النمطية في جافا سكريبت</h1>
+  <div class="content">
+    <h2>مقدمة عن التعبيرات النمطية</h2>
+    <p>التعبيرات النمطية هي أنماط تستخدم للبحث والتطابق واستخراج النصوص في سلاسل الحروف.</p>
+    <pre><code>const pattern = /hello/g;
+const text = "hello world, hello universe!";
+const matches = text.match(pattern);
+console.log(matches); // الناتج: ["hello", "hello"]</code></pre>
+
+    <h2>الحروف والأشكال الخاصة</h2>
+    <p>بعض الحروف والأشكال الخاصة تحمل معاني خاصة في التعبيرات النمطية.</p>
+    <pre><code>const pattern = /a.b/; // يطابق "a" متبوعًا بأي حرف ثم "b"
+const text = "acb, azb, a_b";
+const matches = text.match(pattern);
+console.log(matches); // الناتج: ["acb", "azb"]</code></pre>
+  </div>
+  
+  </article>
+
+
+
+<script>
+  function toggleMenu() {
+    var links = document.querySelector('.links');
+    var menuIcon = document.getElementById('menu-icon');
+    links.classList.toggle('active');
+    menuIcon.classList.toggle('active');
+  }
+  document.getElementById("backButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الإمام
+    window.history.back(); // يعيدك إلى الصفحة السابقة في السجل
+  });
+  
+  document.getElementById("forwardButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الخلف
+    window.history.forward(); // يذهب إلى الصفحة التي تم الانتقال لها بعد الصفحة الحالية
+  });
+  
+  document.getElementById("phoneButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الهاتف
+    // مثلاً: window.location.href = "رابط الهاتف";
+  });
+  
+  document.getElementById("homeButton").addEventListener("click", function() {
+  
+    window.location.href = "/Appt.html";
+  });
+  
+  document.getElementById("commentsButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر المنتديات
+    // مثلاً: window.location.href = "رابط المنتديات";
+  });
+</script>
+</body>
+<footer class="footer">
+  <div class="social-icons">
+    <a href="رابط صفحة الفيسبوك"><i class="fab fa-facebook"></i></a>
+    <a href="رابط قناة التليجرام"><i class="fab fa-telegram"></i></a>
+    <a href="رابط حساب تويتر"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="phone-number">
+    Phone: <a href="tel:1234567890">+249902707192</a>
+  </div>
+  <div class="rights">All rights reserved to Arab Cafe Free Code</div>
+</footer>
+</html>

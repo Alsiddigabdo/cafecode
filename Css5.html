@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قائمة الأقسام</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: 'Font Name', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+nav {
+    position: relative ;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: 'Montserrat', 'sans-serif';
+    height: 100px;
+    background-color: seagreen ;
+    padding: 0 1%;
+    height :60px;
+    
+
+}
+nav .logo { 
+    float: left;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: white ;
+}
+nav .links {
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav .links li {
+    list-style: none;
+}
+nav .links a {
+    display: block;
+    padding: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+nav .links a:hover {
+    color: seagreen ;
+}
+nav .links a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: seagreen ;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+nav .links a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+    color: #27262c ;
+}
+#nav-toggle {
+     position: absolute;
+     top: -100px;
+}
+nav .icon-burger {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+nav .icon-burger .line {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .5s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+    
+    nav .logo {
+        float: none;
+        width: auto;
+        justify-content: center;
+        
+        top: 0;
+        bottom: auto;
+    }
+    nav .links {
+        float: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        right: 0;
+        top: 120px;
+        
+        margin-top :5px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(0, 0, 9, .9);
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a {
+        font-size: 12px;
+        color:#fff ;
+
+    }
+    nav :checked ~ .links {
+        bottom: 0;
+    }
+    nav .icon-burger {
+        display: block;
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 2;
+    }
+}
+.navtools {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 5px;
+    }
+
+    .nav-item {
+        margin: 0 20px;
+    }
+
+    .nav-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* تعيين لون الأيقونات إلى الأبيض */
+    .nav-button i {
+        color: white;
+    }
+
+    /* تفاعل عند مرور الماوس */
+    .nav-button:hover {
+        transform: scale(1.1);
+    }
+
+    /* تفاعل عند الضغط */
+    .nav-button:active {
+        transform: scale(0.9);
+    }
+.footer {
+  background-color: seagreen;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.phone-number, .rights {
+  margin-top: 10px;
+}
+.footer a {
+  color: white;
+  text-decoration: none; /* لإزالة تنسيق الرابط الافتراضي */
+}
+article {
+      max-width: 600px;
+      margin: 0px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      direction: rtl;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+      direction: ltr;
+    }
+    code {
+      font-family: Consolas, monospace;
+      direction: ltr;
+    }
+    h2{
+      text-align: center ;
+      color : rebeccapurple;
+    }
+  
+</style>
+</head>
+<body>
+  <nav class="navtools">
+    <div class="nav-item">
+      <button class="nav-button" id="backButton"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-button" id="phoneButton"><i class="fas fa-phone"></i></button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-button" id="homeButton"><i class="fas fa-home"></i></button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-button" id="commentsButton"><i class="fas fa-comments"></i></button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-button" id="forwardButton"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </nav>
+
+    <nav>
+        <input type="checkbox" id="nav-toggle">
+        <div class="logo">CSS <strong>شرح </strong></div>
+ <ul class="links">
+      <li><a href="Css1.html"> مفهوم تنسيق النمط CSS Styling </a></li>
+      <li><a href="Css2.html"> الاختيار والتحكم في العناصر Selectors and Element Control </a></li>
+      <li><a href="Css3.html">صفات النمط في CSS (CSS Style Properties) </a></li>
+      <li><a href="Css4.html"> الانتقال والتحول (Transitions and Transformations) </a></li>
+      <li><a href="Css5.html">الخطوط والألوان (Typography and Colors)</a></li>
+      <li><a href="Css6.html">الخلفيات والأشكال (Backgrounds and Shapes)</a></li>
+      <li><a href="Css7.html">التخطيط والتنسيق (Layout and Positioning)</a></li>
+      <li><a href="Css8.html">القوائم والمنحنيات (Lists and Curves)</a></li>
+      <li><a href="Css9.html">الرسومات والرسوم المتحركة (Graphics and Animations)</a></li>
+      <li><a href="Css10.html ">الأنماط المتقدمة في CSS (Advanced CSS Styles)</a></li>
+      <li><a href="Css11.html ">تصميم مرن ومتجاوب (Responsive and Flexible Design) </a></li>
+
+      <li><a href="Css12.html ">التحكم في الشفافية والظلال (Controlling Transparency and Shadows)</a></li>
+      <li><a href="Css13.html">متغيرات CSS (CSS Variables)  </a></li>
+            <li><a href="Css14.html"> تنسيق الجداول والنماذج (Styling Tables and Forms)</a></li>
+            
+            
+            
+      <li><a href="Css15.html">flex and grid</a></li>
+      <li><a href="Css16.html">قائمة وسوم Css</a></li>
+      
+
+
+    </ul>
+    <label for="nav-toggle" class="icon-burger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+    </nav>
+
+
+<article>
+    <h1>الخطوط والألوان (Typography and Colors)</h1>
+    <p>تُعتبر الخطوط والألوان من العناصر المهمة في تصميم صفحات الويب. بإمكانك استخدام القواعد المختلفة في CSS3 لتحديد الخطوط، الألوان، والتنسيقات النصية بشكل دقيق.</p>
+    
+    <h2>تحديد الخطوط والألوان</h2>
+    <p>مثال على تحديد الخطوط والألوان:</p>
+    <pre><code>
+/* تحديد الخط واللون */
+body {
+  font-family: Arial, sans-serif;
+  color: #333333;
+  background-color: #f4f4f4;
+}
+
+/* تحديد الحجم واللون لعنوان */
+h1 {
+  font-size: 36px;
+  color: #ff6600;
+}
+
+/* تحديد التباعد بين السطور */
+p {
+  line-height: 1.5;
+}
+
+/* تحديد الألوان باستخدام rgba */
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+    </code></pre>
+    
+    <h2>الاستنتاج</h2>
+    <p>تحديد الخطوط والألوان باستخدام CSS3 يمكن أن يعزز من جمالية ووضوح تصميم صفحات الويب. باستخدام هذه القواعد، يمكنك تحقيق تنسيقات نصية مميزة وجذابة.</p>
+  </article>
+
+
+    
+    
+  </body>
+  
+  
+  
+
+<script>
+  function toggleMenu() {
+    var links = document.querySelector('.links');
+    var menuIcon = document.getElementById('menu-icon');
+    links.classList.toggle('active');
+    menuIcon.classList.toggle('active');
+  }
+  document.getElementById("backButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الإمام
+    window.history.back(); // يعيدك إلى الصفحة السابقة في السجل
+  });
+  
+  document.getElementById("forwardButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الخلف
+    window.history.forward(); // يذهب إلى الصفحة التي تم الانتقال لها بعد الصفحة الحالية
+  });
+  
+  document.getElementById("phoneButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الهاتف
+    // مثلاً: window.location.href = "رابط الهاتف";
+  });
+  
+  document.getElementById("homeButton").addEventListener("click", function() {
+  
+    window.location.href = "/Appt.html";
+  });
+  
+  document.getElementById("commentsButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر المنتديات
+    // مثلاً: window.location.href = "رابط المنتديات";
+  });
+</script>
+</body>
+<footer class="footer">
+  <div class="social-icons">
+    <a href="رابط صفحة الفيسبوك"><i class="fab fa-facebook"></i></a>
+    <a href="رابط قناة التليجرام"><i class="fab fa-telegram"></i></a>
+    <a href="رابط حساب تويتر"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="phone-number">
+    Phone: <a href="tel:1234567890">+249902707192</a>
+  </div>
+  <div class="rights">All rights reserved to Arab Cafe Free Code</div>
+</footer>
+</html>

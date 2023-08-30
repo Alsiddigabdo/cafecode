@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React menu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: 'Font Name', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+nav {
+    position: relative ;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: 'Montserrat', 'sans-serif';
+    height: 100px;
+    background-color: seagreen ;
+    padding: 0 1%;
+    height :60px;
+    
+
+}
+nav .logo { 
+    float: left;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: white ;
+}
+nav .links {
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav .links li {
+    list-style: none;
+}
+nav .links a {
+    display: block;
+    padding: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+nav .links a:hover {
+    color: seagreen ;
+}
+nav .links a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: seagreen ;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+nav .links a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+    color: #27262c ;
+}
+#nav-toggle {
+     position: absolute;
+     top: -100px;
+}
+nav .icon-burger {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+nav .icon-burger .line {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .5s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+    
+    nav .logo {
+        float: none;
+        width: auto;
+        justify-content: center;
+        
+        top: 0;
+        bottom: auto;
+    }
+    nav .links {
+        float: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        right: 0;
+        top: 120px;
+        
+        margin-top :5px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(0, 0, 9, .9);
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a {
+        font-size: 10px;
+        color:#fff ;
+
+    }
+    nav :checked ~ .links {
+        bottom: 0;
+    }
+    nav .icon-burger {
+        display: block;
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 2;
+    }
+}
+.navtools {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 5px;
+    }
+
+    .nav-item {
+        margin: 0 20px;
+    }
+
+    .nav-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* تعيين لون الأيقونات إلى الأبيض */
+    .nav-button i {
+        color: white;
+    }
+
+    /* تفاعل عند مرور الماوس */
+    .nav-button:hover {
+        transform: scale(1.1);
+    }
+
+    /* تفاعل عند الضغط */
+    .nav-button:active {
+        transform: scale(0.9);
+    }
+.footer {
+  background-color: seagreen;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.phone-number, .rights {
+  margin-top: 10px;
+}
+.footer a {
+  color: white;
+  text-decoration: none; /* لإزالة تنسيق الرابط الافتراضي */
+}
+h1 {
+    color: seagreen ;
+    text-align: center ;
+    font-size :18px;
+    direction: rtl ;
+  }
+  p {
+    color: black ;
+    font-size: 16px;
+    text-align: center ;
+    direction: rtl;
+  }
+  span {
+      background-color: #ffd700;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }article {
+      max-width: 600px;
+      margin: 0px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      direction: rtl;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+      direction: ltr;
+    }
+    code {
+      font-family: Consolas, monospace;
+      direction: ltr;
+    }
+    h2{
+      text-align: center ;
+      color : rebeccapurple;
+    }
+</style>
+</head>
+<body>
+  <nav class="navtools">
+    <div class="nav-item">
+        <button class="nav-button" id="backButton"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="phoneButton"><i class="fas fa-phone"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="homeButton"><i class="fas fa-home"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="commentsButton"><i class="fas fa-comments"></i></button>
+    </div>
+    <div class="nav-item">
+        <button class="nav-button" id="forwardButton"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</nav>
+
+    <nav>
+        <input type="checkbox" id="nav-toggle">
+        <div class="logo">.Githup <strong>شرح </strong></div>
+ <ul class="links" dir="rtl">
+      <li><a href="Githup1.html">تثبيت Git: يركز على كيفية تثبيت Git على نظام التشغيل الخاص بك.</a></li>
+      <li><a href="Githup2.html"> إعداد الحساب على GitHub: يشرح كيفية إعداد حساب على GitHub وربطه بـ Git. </a></li>
+      <li><a href="Githup3.html">إنشاء مستودع (Repository): يعلمك كيفية إنشاء مستودع جديد وبدء تتبع التغييرات عليه. </a></li>
+      <li><a href="Githup4.html">الفروع (Branches): يغطي كيفية إنشاء وإدارة الفروع في Git والعمل معها. </a></li>
+      <li><a href="Githup5.html">إجراء تغييرات وتتبعها: يوضح كيفية إجراء تغييرات على المشروع وتتبعها بواسطة Git.</a></li>
+      <li><a href="Githup6.html">التعامل مع النزاعات (Conflicts): يعلمك كيفية التعامل مع النزاعات التي تنشأ عند دمج التغييرات من فروع مختلفة.</a></li>
+      <li><a href="Githup7.html">رفع التغييرات إلى GitHub: يشرح كيفية رفع التغييرات المحلية إلى GitHub ومشاركتها مع الآخرين.</a></li>
+      <li><a href="Githup8.html"> التعاون والمشاركة على GitHub: يوفر نظرة عامة على كيفية التعاون والمشاركة مع فرق العمل المختلفة على GitHub</a></li>
+            <li><a href="Githup9.html"> رفع مشروع على  الgithup بالخطوات </a></li>
+ 
+
+    </ul>
+    <label for="nav-toggle" class="icon-burger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+    </nav>
+
+
+<article>
+<h1>درس التعامل مع النزاعات (Conflicts) على GitHub</h1>
+  <div class="content">
+    <h2>مقدمة</h2>
+    <p>عند دمج التغييرات من فروع مختلفة في Git، قد تحدث نزاعات (Conflicts) عندما تكون هناك تغييرات متناقضة في نفس الملف. في هذا الدرس، سنتعلم كيفية التعامل مع هذه النزاعات وحلها.</p>
+  
+    <h2>الخطوات</h2>
+    <ol>
+      <li><strong>التحديث قبل الدمج:</strong> قبل دمج التغييرات، تأكد من تحديث المشروع باستخدام 
+      <br>
+      
+      <code>git pull</code>
+      <br>
+      للحصول على أحدث نسخة من الفرع.</li>
+      <li><strong>الدمج:</strong> باستخدام الأمر 
+      <br>
+      <code>git merge branch-name</code>
+      <br>
+      ، حاول دمج التغييرات من فرع آخر.</li>
+      <li><strong>النزاعات:</strong> إذا كان هناك نزاعات، ستظهر تنبيهات في الملفات. قم بفتح الملفات وحل النزاعات يدويًا.</li>
+      <li><strong>التعديل والحفظ:</strong> بعد حل النزاعات، قم بتعديل الملفات وحفظ التغييرات.</li>
+      <li><strong>التحديث والتزامن:</strong> بعد حل النزاعات، استخدم
+      <br>
+      <code>git add</code> 
+      <br>
+      و
+      <br>
+      <code>git commit</code>
+      <br>
+      لتزامن التغييرات مع الحلول.</li>
+    </ol>
+  
+    <h2>الفوائد</h2>
+    <p>باستخدام Git للتعامل مع النزاعات، يمكنك حل المشكلات بطريقة منظمة وتأكيد تحديثاتك بعد حل النزاعات. هذا يسمح لفرق العمل بالعمل بشكل سلس على المشروعات دون أي تضارب.</p>
+  </div>
+  
+
+
+  </article>
+
+
+
+<script>
+  function toggleMenu() {
+    var links = document.querySelector('.links');
+    var menuIcon = document.getElementById('menu-icon');
+    links.classList.toggle('active');
+    menuIcon.classList.toggle('active');
+  }
+  document.getElementById("backButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الإمام
+    window.history.back(); // يعيدك إلى الصفحة السابقة في السجل
+  });
+  
+  document.getElementById("forwardButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الخلف
+    window.history.forward(); // يذهب إلى الصفحة التي تم الانتقال لها بعد الصفحة الحالية
+  });
+  
+  document.getElementById("phoneButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر الهاتف
+    // مثلاً: window.location.href = "رابط الهاتف";
+  });
+  
+  document.getElementById("homeButton").addEventListener("click", function() {
+  
+    window.location.href = "/Appt.html";
+  });
+  
+  document.getElementById("commentsButton").addEventListener("click", function() {
+    // قم بتنفيذ الإجراء عند النقر على زر المنتديات
+    // مثلاً: window.location.href = "رابط المنتديات";
+  });
+</script>
+</body>
+<footer class="footer">
+  <div class="social-icons">
+    <a href="رابط صفحة الفيسبوك"><i class="fab fa-facebook"></i></a>
+    <a href="رابط قناة التليجرام"><i class="fab fa-telegram"></i></a>
+    <a href="رابط حساب تويتر"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="phone-number">
+    Phone: <a href="tel:1234567890">+249902707192</a>
+  </div>
+  <div class="rights">All rights reserved to Arab Cafe Free Code</div>
+</footer>
+</html>
